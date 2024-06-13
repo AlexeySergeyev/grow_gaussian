@@ -34,9 +34,12 @@ $Gr = A \left[1.0 - \exp\left(-\frac{x^2 + y^2} {2 \sigma^2}\right)\right]$
 **The asymmetrical function is:**
 $f(x) = a \exp\left(-\frac{x^2 + y^2}{2\sigma_x\sigma_y}\right)$
 
+![image](figs/model2.png)
+
 **The inegral of the Gaussian function**
 *from $-\infty$ to $\infty$:*
 $A = \int_{-\infty}^{\infty}  a \exp\left(-\frac{x^2 + y^2}{2\sigma_x\sigma_y}\right) dx dy =  {2\pi}a\sigma_x\sigma_y$
 
 **The growing function (integration by radius):**
 $Gr = A \left[1.0 - \exp\left(-\frac{x^2 + y^2} {2 \sigma_x\sigma_y}\right)\right]$
+![image](figs/model2_growing_asymmetry.png)
