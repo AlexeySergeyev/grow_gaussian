@@ -1,7 +1,8 @@
 import numpy as np
-from astropy.modeling import models, fitting
+from astropy.modeling import models
+from photutils import CircularAperture, CircularAnnulus, aperture_photometry
 
-def GaussModel(a=1000, x=100, y=100, sx=5, sy=5, theta=0, ratio=None):
+def GaussModel(a=1000, x=50, y=50, sx=5, sy=5, theta=0, ratio=None):
     """
     Get a 2D Gaussian model with parameters a, x, y, sx, sy, theta.
     """
@@ -32,4 +33,15 @@ def Model2Data(model, x0, x1, y0, y1, noise=0):
         data = add_noise(data, noise)
 
     return x, y, data
-    
+
+def AperturePhotometry(data, x, y, r=5, dr=2):
+    """
+    Perform aperture photometry on data.
+    """
+    positions = [(x, y)]
+    aperture = CircularAperture(positions, r)
+    annulus_aperture = CircularAnnulus(positions, r_in=r, r_out=r+dr)
+    apers = [aperture, annulus_aperture]
+    phot_table = aperture_photometry(data, apers)
+
+    return phot_table    
